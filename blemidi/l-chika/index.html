@@ -1,0 +1,26 @@
+<html>
+  <head>
+  </head>
+  <body>
+    <script src="//ryoyakawai.github.io/x-webmidi/src/bower_components/webcomponentsjs/webcomponents.js"></script>
+    <link rel="import" href="//ryoyakawai.github.io/x-webmidi/src/bower_components/x-webmidi/x-webmidirequestaccess.html">
+    <link rel="import" href="//ryoyakawai.github.io/x-webmidi/src/bower_components/x-webmidi/extras/wm-webmidilink/wm-webmidilink.html">
+    <link rel="import" href="//ryoyakawai.github.io/x-webmidi/src/bower_components/x-webmidi/extras/wm-pckeyboard/wm-pckeyboard.html">
+    <x-webmidirequestaccess input output></x-webmidirequestaccess>
+
+    <wm-webmidilink id="wmlink"></wm-webmidilink>
+    <wm-pckeyboard id="pckeyboard"></wm-pckeyboard>
+
+    <div>input: <x-webmidiinput id="input-port" additionalid="pckeyboard"></x-webmidiinput> <span id="midiinput-event-01"></span></div>
+    <div>output: <x-webmidioutput id="output-port"></x-webmidioutput></div>
+
+    <script>
+    window.addEventListener("midiin-event:input-port", function(event){
+        var output1=document.getElementById("output-port");
+        if(output1.checkOutputIdx!="false") output1.sendRawMessage(event.detail.data);
+        console.log(event.detail);
+    });
+    </script>
+
+  </body>
+</html>
