@@ -18,7 +18,7 @@
     window.addEventListener("midiin-event:input-port", function(event){
         var output1=document.getElementById("output-port");
         if(output1.checkOutputIdx!="false") output1.sendRawMessage(event.detail.data);
-        console.log(event.detail);
+        console.log(event.detail.data);
     });
     </script>
 
